@@ -1,0 +1,284 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "title": "Dover Onsite Coding Challenge Backend API",
+        "description": "Dover Onsite Coding Challenge Backend",
+        "termsOfService": "https://www.google.com/policies/terms/",
+        "contact": {
+            "email": "coding-challenge@dover.io"
+        },
+        "license": {
+            "name": "No License"
+        },
+        "version": "0.1.0"
+    },
+    "basePath": "/",
+    "consumes": [
+        "application/json"
+    ],
+    "produces": [
+        "application/json"
+    ],
+    "securityDefinitions": {
+        "Basic": {
+            "type": "basic"
+        }
+    },
+    "security": [
+        {
+            "Basic": []
+        }
+    ],
+    "paths": {
+        "/api/outreach": {
+            "get": {
+                "operationId": "listOutreach",
+                "description": "list oureach",
+                "parameters": [
+                    {
+                        "name": "ordering",
+                        "in": "query",
+                        "description": "Which field to use when ordering the results.",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "search",
+                        "in": "query",
+                        "description": "A search term.",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "state",
+                        "in": "query",
+                        "description": "",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "description": "Number of results to return per page.",
+                        "required": false,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "offset",
+                        "in": "query",
+                        "description": "The initial index from which to return the results.",
+                        "required": false,
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "required": [
+                                "count",
+                                "results"
+                            ],
+                            "type": "object",
+                            "properties": {
+                                "count": {
+                                    "type": "integer"
+                                },
+                                "next": {
+                                    "type": "string",
+                                    "format": "uri",
+                                    "x-nullable": true
+                                },
+                                "previous": {
+                                    "type": "string",
+                                    "format": "uri",
+                                    "x-nullable": true
+                                },
+                                "results": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/Outreach"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "tags": [
+                    "api"
+                ]
+            },
+            "post": {
+                "operationId": "createOutreach",
+                "description": "create outreach",
+                "parameters": [
+                    {
+                        "name": "data",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/Outreach"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/Outreach"
+                        }
+                    }
+                },
+                "tags": [
+                    "api"
+                ]
+            },
+            "parameters": []
+        },
+        "/api/outreach/{id}": {
+            "get": {
+                "operationId": "getOutreach",
+                "description": "retrieve outreach",
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/Outreach"
+                        }
+                    }
+                },
+                "tags": [
+                    "api"
+                ]
+            },
+            "put": {
+                "operationId": "updateOutreach",
+                "description": "update oureach",
+                "parameters": [
+                    {
+                        "name": "data",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/Outreach"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/Outreach"
+                        }
+                    }
+                },
+                "tags": [
+                    "api"
+                ]
+            },
+            "patch": {
+                "operationId": "partialUpdateOutreach",
+                "description": "partial update oureach",
+                "parameters": [
+                    {
+                        "name": "data",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/Outreach"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/Outreach"
+                        }
+                    }
+                },
+                "tags": [
+                    "api"
+                ]
+            },
+            "delete": {
+                "operationId": "api_outreach_delete",
+                "description": "A simple ViewSet for viewing and editing outreach.",
+                "parameters": [],
+                "responses": {
+                    "204": {
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "api"
+                ]
+            },
+            "parameters": [
+                {
+                    "name": "id",
+                    "in": "path",
+                    "description": "A UUID string identifying this outreach.",
+                    "required": true,
+                    "type": "string",
+                    "format": "uuid"
+                }
+            ]
+        },
+        "/auth-token/": {
+            "post": {
+                "operationId": "auth-token_create",
+                "description": "",
+                "parameters": [],
+                "responses": {
+                    "201": {
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "auth-token"
+                ]
+            },
+            "parameters": []
+        }
+    },
+    "definitions": {
+        "Outreach": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "title": "Id",
+                    "type": "string",
+                    "format": "uuid",
+                    "readOnly": true
+                },
+                "created": {
+                    "title": "Created",
+                    "type": "string",
+                    "format": "date-time",
+                    "readOnly": true
+                },
+                "modified": {
+                    "title": "Modified",
+                    "type": "string",
+                    "format": "date-time",
+                    "readOnly": true
+                },
+                "editor_state": {
+                    "title": "Editor state",
+                    "type": "object",
+                    "x-nullable": true
+                },
+                "state": {
+                    "title": "State",
+                    "type": "string",
+                    "enum": [
+                        "DRAFT",
+                        "FINALIZED"
+                    ]
+                }
+            }
+        }
+    }
+}

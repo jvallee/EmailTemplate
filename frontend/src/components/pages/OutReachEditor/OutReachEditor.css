@@ -1,0 +1,27 @@
+/* .DraftEditor-root {
+    border: 1px solid black;
+    margin-left: 40px;
+    margin-top: 100px;
+    margin-right: 40px;
+    overflow: scroll;
+}
+
+.contentContainer {
+    border: 1px solid black;
+    margin-left: 40px;
+    margin-top: 100px;
+    margin-right: 40px;
+} */
+
+
+.EditorHeader {
+    display: flex;
+    justify-content: space-between;
+    /* padding-left: 20px;
+    padding-right: 20px; */
+}
+
+.OutReachEditor_root {
+    padding-left: 20px;
+    padding-right: 20px;
+}

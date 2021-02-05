@@ -1,0 +1,63 @@
+{
+  "name": "frontend",
+  "version": "0.1.0",
+  "private": true,
+  "proxy": "http://localhost:8000",
+  "dependencies": {
+    "@azure/core-http": "^1.0.0",
+    "@draft-js-plugins/editor": "^4.0.0",
+    "@material-ui/core": "^4.11.2",
+    "@testing-library/jest-dom": "^5.11.4",
+    "@testing-library/react": "^11.1.0",
+    "@testing-library/user-event": "^12.1.10",
+    "@types/draft-js": "^0.10.44",
+    "@types/jest": "^26.0.15",
+    "@types/node": "^12.0.0",
+    "@types/react": "^16.9.53",
+    "@types/react-dom": "^16.9.8",
+    "@types/react-draft-wysiwyg": "^1.13.1",
+    "@types/react-router": "^5.1.9",
+    "@types/react-router-dom": "^5.1.7",
+    "axios": "^0.21.1",
+    "bootstrap": "^4.5.3",
+    "draft-js": "^0.11.7",
+    "react": "^17.0.1",
+    "react-bootstrap": "^1.4.0",
+    "react-dom": "^17.0.1",
+    "react-draft-wysiwyg": "^1.14.5",
+    "react-router": "^5.2.0",
+    "react-router-dom": "^5.2.0",
+    "react-scripts": "4.0.1",
+    "typescript": "^4.0.3",
+    "web-vitals": "^0.2.4"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "api": "rm -rf src/util/gen/api && openapi-generator generate -i /Users/jasonmichaelvallee/PycharmProjects/todo-react-django/EmailTemplate/djangoProject/schema2.yml --generator-name typescript-axios -o src/util/gen/api --config api.json && cd src/util/gen/api && npm install && npm run build && npm audit fix"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "@openapitools/openapi-generator-cli": "^2.1.17",
+    "@types/history": "^4.7.3"
+  }
+}

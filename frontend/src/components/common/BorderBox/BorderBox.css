@@ -1,0 +1,8 @@
+.border_box {
+    height: 48px;
+    width: 400px;
+    flex-direction: row;
+    background-color: rgba(246, 247, 250, 0.6);
+    border: 1px solid rgba(183, 194, 198, 0.6);
+    border-radius: 4px;
+}

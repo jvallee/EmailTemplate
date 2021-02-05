@@ -1,0 +1,768 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "title": "Back End API",
+        "description": "Dover Onsite Coding Challenge Backend",
+        "termsOfService": "https://www.google.com/policies/terms/",
+        "contact": {
+            "email": "coding-challenge@dover.io"
+        },
+        "license": {
+            "name": "No License"
+        },
+        "version": "v1"
+    },
+    "basePath": "/api",
+    "consumes": [
+        "application/json"
+    ],
+    "produces": [
+        "application/json"
+    ],
+    "securityDefinitions": {
+        "Basic": {
+            "type": "basic"
+        }
+    },
+    "security": [
+        {
+            "Basic": []
+        }
+    ],
+    "paths": {
+        "/candidates/": {
+            "get": {
+                "operationId": "candidates_list",
+                "description": "",
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/Candidate"
+                            }
+                        }
+                    }
+                },
+                "tags": [
+                    "candidates"
+                ]
+            },
+            "post": {
+                "operationId": "candidates_create",
+                "description": "",
+                "parameters": [
+                    {
+                        "name": "data",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/Candidate"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/Candidate"
+                        }
+                    }
+                },
+                "tags": [
+                    "candidates"
+                ]
+            },
+            "parameters": []
+        },
+        "/candidates/{id}/": {
+            "get": {
+                "operationId": "candidates_read",
+                "description": "",
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/Candidate"
+                        }
+                    }
+                },
+                "tags": [
+                    "candidates"
+                ]
+            },
+            "put": {
+                "operationId": "candidates_update",
+                "description": "",
+                "parameters": [
+                    {
+                        "name": "data",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/Candidate"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/Candidate"
+                        }
+                    }
+                },
+                "tags": [
+                    "candidates"
+                ]
+            },
+            "patch": {
+                "operationId": "candidates_partial_update",
+                "description": "",
+                "parameters": [
+                    {
+                        "name": "data",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/Candidate"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/Candidate"
+                        }
+                    }
+                },
+                "tags": [
+                    "candidates"
+                ]
+            },
+            "delete": {
+                "operationId": "candidates_delete",
+                "description": "",
+                "parameters": [],
+                "responses": {
+                    "204": {
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "candidates"
+                ]
+            },
+            "parameters": [
+                {
+                    "name": "id",
+                    "in": "path",
+                    "description": "A unique integer value identifying this candidate.",
+                    "required": true,
+                    "type": "integer"
+                }
+            ]
+        },
+        "/clients/": {
+            "get": {
+                "operationId": "clients_list",
+                "description": "",
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/Client"
+                            }
+                        }
+                    }
+                },
+                "tags": [
+                    "clients"
+                ]
+            },
+            "post": {
+                "operationId": "clients_create",
+                "description": "",
+                "parameters": [
+                    {
+                        "name": "data",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/Client"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/Client"
+                        }
+                    }
+                },
+                "tags": [
+                    "clients"
+                ]
+            },
+            "parameters": []
+        },
+        "/clients/{id}/": {
+            "get": {
+                "operationId": "clients_read",
+                "description": "",
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/Client"
+                        }
+                    }
+                },
+                "tags": [
+                    "clients"
+                ]
+            },
+            "put": {
+                "operationId": "clients_update",
+                "description": "",
+                "parameters": [
+                    {
+                        "name": "data",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/Client"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/Client"
+                        }
+                    }
+                },
+                "tags": [
+                    "clients"
+                ]
+            },
+            "patch": {
+                "operationId": "clients_partial_update",
+                "description": "",
+                "parameters": [
+                    {
+                        "name": "data",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/Client"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/Client"
+                        }
+                    }
+                },
+                "tags": [
+                    "clients"
+                ]
+            },
+            "delete": {
+                "operationId": "clients_delete",
+                "description": "",
+                "parameters": [],
+                "responses": {
+                    "204": {
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "clients"
+                ]
+            },
+            "parameters": [
+                {
+                    "name": "id",
+                    "in": "path",
+                    "description": "A unique integer value identifying this client.",
+                    "required": true,
+                    "type": "integer"
+                }
+            ]
+        },
+        "/jobs/": {
+            "get": {
+                "operationId": "jobs_list",
+                "description": "",
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/Job"
+                            }
+                        }
+                    }
+                },
+                "tags": [
+                    "jobs"
+                ]
+            },
+            "post": {
+                "operationId": "jobs_create",
+                "description": "",
+                "parameters": [
+                    {
+                        "name": "data",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/Job"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/Job"
+                        }
+                    }
+                },
+                "tags": [
+                    "jobs"
+                ]
+            },
+            "parameters": []
+        },
+        "/jobs/{id}/": {
+            "get": {
+                "operationId": "jobs_read",
+                "description": "",
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/Job"
+                        }
+                    }
+                },
+                "tags": [
+                    "jobs"
+                ]
+            },
+            "put": {
+                "operationId": "jobs_update",
+                "description": "",
+                "parameters": [
+                    {
+                        "name": "data",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/Job"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/Job"
+                        }
+                    }
+                },
+                "tags": [
+                    "jobs"
+                ]
+            },
+            "patch": {
+                "operationId": "jobs_partial_update",
+                "description": "",
+                "parameters": [
+                    {
+                        "name": "data",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/Job"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/Job"
+                        }
+                    }
+                },
+                "tags": [
+                    "jobs"
+                ]
+            },
+            "delete": {
+                "operationId": "jobs_delete",
+                "description": "",
+                "parameters": [],
+                "responses": {
+                    "204": {
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "jobs"
+                ]
+            },
+            "parameters": [
+                {
+                    "name": "id",
+                    "in": "path",
+                    "description": "A unique integer value identifying this job.",
+                    "required": true,
+                    "type": "integer"
+                }
+            ]
+        },
+        "/schema/": {
+            "get": {
+                "operationId": "schema_list",
+                "summary": "OpenApi3 schema for this API. Format can be selected via content negotiation.",
+                "description": "- YAML: application/vnd.oai.openapi\n- JSON: application/vnd.oai.openapi+json",
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "produces": [
+                    "application/vnd.oai.openapi",
+                    "application/yaml",
+                    "application/vnd.oai.openapi+json",
+                    "application/json"
+                ],
+                "tags": [
+                    "schema"
+                ]
+            },
+            "parameters": []
+        },
+        "/schema/redoc/": {
+            "get": {
+                "operationId": "schema_redoc_list",
+                "description": "",
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "produces": [],
+                "tags": [
+                    "schema"
+                ]
+            },
+            "parameters": []
+        },
+        "/schema/swagger-ui/": {
+            "get": {
+                "operationId": "schema_swagger-ui_list",
+                "description": "",
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "produces": [],
+                "tags": [
+                    "schema"
+                ]
+            },
+            "parameters": []
+        },
+        "/todos/": {
+            "get": {
+                "operationId": "todos_list",
+                "description": "",
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/Todo"
+                            }
+                        }
+                    }
+                },
+                "tags": [
+                    "todos"
+                ]
+            },
+            "post": {
+                "operationId": "todos_create",
+                "description": "",
+                "parameters": [
+                    {
+                        "name": "data",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/Todo"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/Todo"
+                        }
+                    }
+                },
+                "tags": [
+                    "todos"
+                ]
+            },
+            "parameters": []
+        },
+        "/todos/{id}/": {
+            "get": {
+                "operationId": "todos_read",
+                "description": "",
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/Todo"
+                        }
+                    }
+                },
+                "tags": [
+                    "todos"
+                ]
+            },
+            "put": {
+                "operationId": "todos_update",
+                "description": "",
+                "parameters": [
+                    {
+                        "name": "data",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/Todo"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/Todo"
+                        }
+                    }
+                },
+                "tags": [
+                    "todos"
+                ]
+            },
+            "patch": {
+                "operationId": "todos_partial_update",
+                "description": "",
+                "parameters": [
+                    {
+                        "name": "data",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/Todo"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/Todo"
+                        }
+                    }
+                },
+                "tags": [
+                    "todos"
+                ]
+            },
+            "delete": {
+                "operationId": "todos_delete",
+                "description": "",
+                "parameters": [],
+                "responses": {
+                    "204": {
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "todos"
+                ]
+            },
+            "parameters": [
+                {
+                    "name": "id",
+                    "in": "path",
+                    "description": "A unique integer value identifying this todo.",
+                    "required": true,
+                    "type": "integer"
+                }
+            ]
+        }
+    },
+    "definitions": {
+        "Candidate": {
+            "required": [
+                "name",
+                "years_experience",
+                "custom"
+            ],
+            "type": "object",
+            "properties": {
+                "name": {
+                    "title": "Name",
+                    "type": "string",
+                    "minLength": 1
+                },
+                "years_experience": {
+                    "title": "Years experience",
+                    "type": "string",
+                    "format": "decimal"
+                },
+                "custom": {
+                    "title": "Custom",
+                    "type": "string",
+                    "minLength": 1
+                }
+            }
+        },
+        "Job": {
+            "required": [
+                "name",
+                "template",
+                "poster"
+            ],
+            "type": "object",
+            "properties": {
+                "id": {
+                    "title": "ID",
+                    "type": "integer",
+                    "readOnly": true
+                },
+                "name": {
+                    "title": "Name",
+                    "type": "string",
+                    "maxLength": 240,
+                    "minLength": 1
+                },
+                "template": {
+                    "title": "Template",
+                    "type": "string",
+                    "minLength": 1
+                },
+                "hasDraft": {
+                    "title": "HasDraft",
+                    "type": "boolean"
+                },
+                "templateDraft": {
+                    "title": "TemplateDraft",
+                    "type": "string",
+                    "minLength": 1
+                },
+                "subject": {
+                    "title": "Subject",
+                    "type": "string",
+                    "maxLength": 140,
+                    "minLength": 1
+                },
+                "poster": {
+                    "title": "Poster",
+                    "type": "integer"
+                }
+            },
+            "x-nullable": true
+        },
+        "Client": {
+            "required": [
+                "name"
+            ],
+            "type": "object",
+            "properties": {
+                "id": {
+                    "title": "ID",
+                    "type": "integer",
+                    "readOnly": true
+                },
+                "jobs": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/Job"
+                    },
+                    "readOnly": true,
+                    "x-nullable": true
+                },
+                "name": {
+                    "title": "Name",
+                    "type": "string",
+                    "maxLength": 120,
+                    "minLength": 1
+                }
+            }
+        },
+        "Todo": {
+            "required": [
+                "title",
+                "description"
+            ],
+            "type": "object",
+            "properties": {
+                "id": {
+                    "title": "ID",
+                    "type": "integer",
+                    "readOnly": true
+                },
+                "title": {
+                    "title": "Title",
+                    "type": "string",
+                    "maxLength": 120,
+                    "minLength": 1
+                },
+                "description": {
+                    "title": "Description",
+                    "type": "string",
+                    "minLength": 1
+                },
+                "completed": {
+                    "title": "Completed",
+                    "type": "boolean"
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,8 @@
+.header_root {
+    border-bottom: 1px solid rgba(230, 230, 230, 1);
+    min-height: 100px;
+    background-color: white;
+    display: flex;
+    flex-direction: row;
+    box-shadow: 0px 5px 5px #bba7a7
+}
