@@ -23,7 +23,6 @@ from drf_yasg import openapi
 from drf_yasg.views import get_schema_view
 from rest_framework import routers                    # add this
 from candidate import views as candidateviews
-from todo import views                            # add this
 from client import views as clientsviews
 
 
@@ -53,7 +52,6 @@ schema_view = get_schema_view(
 )
 
 router = routers.DefaultRouter()                      # add this
-router.register(r'todos', views.TodoView, 'todo')     # add this
 router.register(r'candidates', candidateviews.CandidateView, 'candidate')
 router.register(r'clients', clientsviews.ClientView)
 router.register(r'jobs', clientsviews.JobView)

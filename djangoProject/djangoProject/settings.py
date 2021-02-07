@@ -41,8 +41,6 @@ INSTALLED_APPS = [
     'django_extensions',
     'rest_framework',
     'rest_framework_swagger',
-    'todo',
-    'polls',
     'client',
     'candidate',
     'drf_spectacular',
