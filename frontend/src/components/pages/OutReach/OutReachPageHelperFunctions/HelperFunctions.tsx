@@ -48,9 +48,9 @@ export function isEditorChanged(state: OutReachEditorReducerState) {
 export function publishClickHandler(
   state: OutReachEditorReducerState,
   dispatch: React.Dispatch<OutReachEditorActions>,
-  client: ValleeBackendApi
+  apiService: ValleeBackendApi
 ) {
-  client
+  apiService
     .createOutreach({
       state: OutreachStateEnum.Finalized,
       editor_state: {
@@ -68,7 +68,7 @@ export function publishClickHandler(
 export function saveClickHandler(
   state: OutReachEditorReducerState,
   dispatch: React.Dispatch<OutReachEditorActions>,
-  client: ValleeBackendApi
+  apiService: ValleeBackendApi
 ) {
   debugger;
   /* TODO: create new reducer action to update  state with returned value from api */
@@ -76,7 +76,7 @@ export function saveClickHandler(
     state.outreach?.id &&
     state.outreach?.state !== OutreachStateEnum.Finalized
   ) {
-    client
+    apiService
       .partialUpdateOutreach(state.outreach.id, {
         job: state.job,
         editor_state: {
@@ -90,7 +90,7 @@ export function saveClickHandler(
         dispatch({ type: "EDITOR_PUT_POST_200", payload: value.data });
       });
   } else if (isEditorChanged(state)) {
-    client
+    apiService
       .createOutreach({
         job: state.job,
         editor_state: {

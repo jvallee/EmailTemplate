@@ -31,21 +31,14 @@ from drf_spectacular.views import SpectacularAPIView, SpectacularRedocView, Spec
 
 api_info = openapi.Info(
     title="Back End API",
-    description="Dover Onsite Coding Challenge Backend",
+    description="CareIgnition Back End API for code demo",
     default_version="0.0.1",
     terms_of_service="https://www.google.com/policies/terms/",
-    contact=openapi.Contact(email="coding-challenge@dover.io"),
+    contact=openapi.Contact(email="jasonmvallee@gmail.com"),
     license=openapi.License(name="No License"),
 )
 
 
-# openapi_info = openapi.Info(
-#     title="NetBox API",
-#     default_version='v2',
-#     description="API to access NetBox",
-#     terms_of_service="https://github.com/netbox-community/netbox",
-#     license=openapi.License(name="Apache v2 License"),
-# )
 schema_view = get_schema_view(
     api_info,
     public=True,

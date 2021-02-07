@@ -2,10 +2,10 @@
     "swagger": "2.0",
     "info": {
         "title": "Back End API",
-        "description": "Dover Onsite Coding Challenge Backend",
+        "description": "CareIgnition Back End API for code demo",
         "termsOfService": "https://www.google.com/policies/terms/",
         "contact": {
-            "email": "coding-challenge@dover.io"
+            "email": "jasonmvallee@gmail.com"
         },
         "license": {
             "name": "No License"

@@ -16,12 +16,12 @@ export type OutReachHeaderProps = {
   dispatch: (value: OutReachEditorActions) => void;
   state: OutReachEditorReducerState;
   isEditorChanged: boolean;
-  client: ValleeBackendApi;
+  apiService: ValleeBackendApi;
   templateState: string;
 };
 
 const OutReachHeader: React.FC<OutReachHeaderProps> = (props) => {
-  const { dispatch, state, isEditorChanged, templateState, client } = props;
+  const { dispatch, state, isEditorChanged, templateState, apiService } = props;
   return (
     <HeaderContainer className={"EditorHeader"}>
       <div className="row_container">
@@ -31,7 +31,7 @@ const OutReachHeader: React.FC<OutReachHeaderProps> = (props) => {
       <div className="row_container">
         <Button
           onClick={() => {
-            saveClickHandler(state, dispatch, client);
+            saveClickHandler(state, dispatch, apiService);
           }}
           disabled={!isEditorChanged}
           className={"outreach_button"}
@@ -40,7 +40,7 @@ const OutReachHeader: React.FC<OutReachHeaderProps> = (props) => {
         </Button>
         <Button
           onClick={() => {
-            publishClickHandler(state, dispatch, client);
+            publishClickHandler(state, dispatch, apiService);
           }}
           disabled={!isEditorChanged && state.outreach?.state === "FINALIZED"}
           className={"outreach_button"}

@@ -1,13 +1,12 @@
 import React, { ChangeEvent, useEffect, useReducer, useState } from "react";
 import { EditorState } from "draft-js";
-import { Editor, RawDraftContentState } from "react-draft-wysiwyg";
+import { Editor } from "react-draft-wysiwyg";
 import reducer, { OutReachEditorReducerState } from "./OutReachReducer";
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 import "draft-js/dist/Draft.css";
 import "./OutReach.css";
 import { TextField } from "@material-ui/core";
 import Modal from "./Modal/Modal";
-// import { hasDraft } from "../OutReachPageHelperFunctions/HelperFunctions";
 import OutReachHeader from "./OutReachHeader/OutReachHeader";
 import {
   OutreachStateEnum,
@@ -16,15 +15,27 @@ import {
 import { hasDraft } from "./OutReachPageHelperFunctions/HelperFunctions";
 import { useParams } from "react-router";
 
-const temp = "http://127.0.0.1:8000/api";
-const temp2 = "http://localhost:8000/api";
-const client = new ValleeBackendApi(undefined, temp2);
+type OutReachEditorPageProps = {
+  apiService: ValleeBackendApi;
+};
 
 interface IUserPublicProfileRouteParams {
   id: string;
 }
-
-const OutReachEditorPage: React.FC = () => {
+/**
+ * Renders the Outreach Editor Page
+ *
+ * @remarks
+ * This method is part of the {@link core-library#Statistics | Statistics subsystem}.
+ *
+ * @param x - The first input number
+ * @param y - The second input number
+ * @returns The arithmetic mean of `x` and `y`
+ *
+ * @beta
+ */
+const OutReachEditorPage: React.FC<OutReachEditorPageProps> = (props) => {
+  const { apiService } = props;
   const id = parseInt(useParams<IUserPublicProfileRouteParams>().id);
   const [state, dispatch] = useReducer(reducer, {
     editorState: EditorState.createEmpty(),
@@ -37,12 +48,9 @@ const OutReachEditorPage: React.FC = () => {
     hasDraft: { hasDraft: true },
   });
   useEffect(() => {
-    // client.jobsOutreachList(id).then((value) => {});
-    // client.listOutreach().then((value) => {
-    client.jobsOutreachList(id).then((value) => {
+    //note: we get jobs sorted by creation, with most recent at first index
+    apiService.jobsOutreachList(id).then((value) => {
       const data = value.data;
-      const temp = hasDraft(value.data);
-      debugger;
       dispatch({
         type: "EDITOR_LOADED_200",
         payload: {
@@ -85,7 +93,7 @@ const OutReachEditorPage: React.FC = () => {
         dispatch={dispatch}
         state={state}
         isEditorChanged={isEditorChanged(state)}
-        client={client}
+        apiService={apiService}
         templateState={templateState}
       />
       <TextField

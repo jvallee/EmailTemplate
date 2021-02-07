@@ -32,6 +32,9 @@ interface IUserPublicProfileRouteParams {
   id: string;
 }
 
+/**
+ * @deprecated The method should not be used
+ */
 const OutReachEditorPage: React.FC<OutReachEditorProps> = (props) => {
   const { apiService } = props;
   const id = parseInt(useParams<IUserPublicProfileRouteParams>().id);

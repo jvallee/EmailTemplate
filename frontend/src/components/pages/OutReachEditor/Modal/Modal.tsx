@@ -14,6 +14,9 @@ type ModalProps = {
   isOpen: boolean;
 };
 
+/**
+ * @deprecated The method should not be used
+ */
 const Modal: React.FC<ModalProps> = (props) => {
   const { clickDraftHandler, clickSavedHandler, isOpen } = props;
   const theme = useTheme();

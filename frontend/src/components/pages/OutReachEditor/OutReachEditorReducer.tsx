@@ -46,6 +46,9 @@ export type OutReachEditorActions =
       payload: EditorState;
     };
 
+/**
+ * @deprecated The method should not be used
+ */
 export default function reducer(
   state: OutReachEditorReducerState,
   action: OutReachEditorActions
