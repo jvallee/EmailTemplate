@@ -108,10 +108,12 @@ $ python manage.py migrate
 Note: you can create Clients, Jobs, and Outreaches in the python shell. Might be easier to do this in 
 
 ### Client Generator
-Generating the frontend client
+Generating the frontend client.
 
-You only need to do this if you modify the API.
-
+inside EmailTemplate/djangoProject run the following code. (note: you only need to do this if you modify the API)
+```
+$  bash generate_client_api.sh
+```
 
 FAQ
 ---
