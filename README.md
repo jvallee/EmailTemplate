@@ -16,7 +16,7 @@ CONTENTS OF THIS FILE
  INTRODUCTION
 ------------
 
-This README is currently under construction. This project is a fullstack application with Typescript/React on the frontend and Django managing a Postgres server on the backend. The purpose of this project is too provide a web interface that helps to manage template emails to be used to send out numerous customizable outreach messages. In the current setup, the user logins in, selects a "job" to edit the outreach for, then is taken to the Outreach Editor Page where they can edit, save, or publish publish their outreach template. Note that both the login in functionality and the alljobs page are very bare bones and will be updated with time.
+This project is a fullstack application with Typescript/React on the frontend and Django managing a Postgres server on the backend. The purpose of this project is too provide a web interface that helps to manage template emails to be used to send out numerous customizable outreach messages. In the current setup, the user logins in, selects a "job" to edit the outreach for, then is taken to the Outreach Editor Page where they can edit, save, or publish publish their outreach template. Note that both the login in functionality and the alljobs page are very bare bones and will be updated with time.
 
 
  * This application was developed in PyCharm and Visual Studio code. It is recommended that be used to debug but not by any means required.
@@ -36,12 +36,14 @@ This application uses the following technologies:
 REQUIREMENTS
 ------------
 
-Before starting this application requires the following installed on your computer:
+Before starting this application requires the following be installed on your computer:
 
- * python (version 3.9.1 is used in this project) and pip
+ * python (version 3.9.1 is used in this project but other versions of python3 could work) and pip
  * node.js
+ * postgres (important this is installed before making virtual environment)
  * openapi-generator (Recommended not required) can install with homebrew 
  
+note: I recommned that if you do not have homebrew get it, and that can be used to easily install, update, or uninstall what is required. 
  
  INSTALLATION
 ------------
@@ -54,22 +56,27 @@ Note: these setup instruction are mac specific, but can be applied to windows wi
 
 3. then navigate to the folder "EmailTemplate" in your terminal or use git clone to create
 
-4. Now if you want to set up a virtual environment, change into djangoProject folder which will contain our backend and
+4. Now if you want to set up a virtual environment (recommended), change into djangoProject folder which will contain our backend and
 in your terminal type in "python3 -m venv .env --copies" --copies only required on macOS, if you don't want to ignore 
-this step (ignoring is not recommended). Alternatively, PyCharm can handle this for you automatically
+this step (ignoring is not recommended).
 
-5. then type "pip3 install -r requirements.txt" and hit return
+5. then type "pip3 install -r requirements.txt" and hit return (again make sure you have installed postgres)
 
-6. Run "python manage.py loaddata initDb.json" to load in some initial data, 
+5b. It is possible you get an error regarding installing psycopg2, a possible fix would be to install psycopg2-binary, but I'd recommend a cursory google search on said error before doing anything.
+
+6. Now in djangoProject/djangoProject/settings.py you will need to update the Databases dictionary with the proper attributes. Alternatively, you could create a database that matches the database name in postgres. Do this by running "psql" in your terminal and then running "CREATE DATABASE django_test", is is possible you will get an error that your username is not initiated, if so a simple google search will tell you how to create a postgres user. 
+6b. Make sure you have actually started postgres. This is optional but recommended. Run "python manage.py loaddata initDb.json" to load in some initial data
+
+7. "bash generate_client_api.sh" this will regenerate the client api, make sure opanapi-generator is installed
    
-7. To start the backend run "python manage.py runserver" 
+8. To start the backend run "python manage.py runserver",    
 
-8. For the fronend navigate to EmailTemplate/frontend and run npm install.
+9. For the frontend navigate to EmailTemplate/frontend and run npm install.
 
-9. After that run npm start, to start up the frontend
+10. After that run npm start, to start up the frontend
 
 
-Now that you have the application running, click the login button, and then hit the all jobs link to see a list of jobs that you can edit the outreach template for. If yo did not load in the initial data, this page will be blank. Then select any job and you will be taken to the editor.
+Now that you have the application running, click the login button, and then hit the all jobs link to see a list of jobs that you can edit the outreach template for. Note: if you did not load in the initial data, this page will be blank. Once on the all jobs page select any job and you will be taken to the editor and then we will pull the associated data for that editor.
 
  
 APPLICATION ARCHITECTURE/DESCRIPTION

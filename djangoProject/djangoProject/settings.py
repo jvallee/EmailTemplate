@@ -97,17 +97,16 @@ DATABASES = {
 
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
 
-        'NAME': 'django_test',
+        'NAME': 'django_test',  # db name
 
-        'USER': 'postgres',
+        'USER': 'postgres',  # postgres username
 
-        'PASSWORD': 'adrianna',
+        'PASSWORD': '',  # password with username
 
         'HOST': 'localhost',
 
         'PORT': '',
     }
-
 }
 
 # Password validation
@@ -160,7 +159,6 @@ CORS_ORIGIN_WHITELIST = (
 )
 
 SWAGGER_SETTINGS = {"DEFAULT_INFO": "djangoProject.urls.api_info"}
-
 
 SPECTACULAR_SETTINGS = {
     # path prefix is used for tagging the discovered operations.
@@ -268,5 +266,3 @@ SPECTACULAR_SETTINGS = {
     'OAUTH2_REFRESH_URL': None,
     'OAUTH2_SCOPES': None,
 }
-
-
