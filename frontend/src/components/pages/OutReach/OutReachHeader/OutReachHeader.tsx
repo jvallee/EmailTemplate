@@ -6,7 +6,6 @@ import {
   publishClickHandler,
   saveClickHandler,
 } from "../OutReachPageHelperFunctions/HelperFunctions";
-import Modal from "../Modal/Modal";
 import {
   OutReachEditorActions,
   OutReachEditorReducerState,

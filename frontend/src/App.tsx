@@ -12,7 +12,7 @@ const apiService = new ValleeBackendApi(undefined, baseURI);
 
 function App() {
   const initialClient: Client = { name: "", jobs: [], id: 0 };
-  const [client, setClient] = useState(initialClient);
+  const [client, setClient] = useState(initialClient); // not necessary in this iteration of the project
 
   return (
     <div>

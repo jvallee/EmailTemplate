@@ -11,10 +11,11 @@ const AllJobsPage: React.FC<AllJobsPageProps> = (props) => {
   const { apiService } = props;
   const [jobs, setJobs] = useState([{} as Job]);
 
+  // TODO: update similiar to how we get outreach pages related to job,
+  // will need to change backend to handle a new route to get jobs related to client
   useEffect(() => {
     apiService?.listJob().then((value) => {
-      const temp = value.data;
-      setJobs(temp);
+      setJobs(value.data);
     });
   }, []);
 

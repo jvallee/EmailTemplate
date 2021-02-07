@@ -1,4 +1,4 @@
-import React, { CSSProperties, useEffect } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import { ValleeBackendApi, Job } from "../../../util/gen/api/dist";
 import "./JobCell.css";
@@ -8,21 +8,8 @@ type JobCellProps = {
   apiService?: ValleeBackendApi;
 };
 
-const myStyles: CSSProperties = {
-  position: "absolute",
-};
 const JobCell: React.FC<JobCellProps> = (props) => {
-  const { job, apiService } = props;
-  debugger;
-  //   useEffect(() => {
-  //     debugger;
-  //     apiService?.apiJobsList().then((value) => {
-  //       const temp = value.data;
-  //       var temp2: Job = value.data[0];
-  //       debugger;
-  //       console.log(temp);
-  //     });
-  //   }, []);
+  const { job } = props;
 
   return (
     <Link to={"/alljobs/" + job.id} style={{ textDecoration: "none" }}>

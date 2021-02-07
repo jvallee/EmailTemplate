@@ -11,9 +11,8 @@ type HomePageProps = {
 
 const HomePage: React.FC<HomePageProps> = (props) => {
   const { client, setClient, apiService } = props;
+  // TODO: implement login logic && allow user to be created
   const login = () => {
-    debugger;
-    console.log("clicked");
     apiService?.getClient(1).then((value) => {
       debugger;
       setClient(value.data);

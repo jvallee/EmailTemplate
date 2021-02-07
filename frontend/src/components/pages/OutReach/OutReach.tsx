@@ -25,12 +25,8 @@ interface IUserPublicProfileRouteParams {
 /**
  * Renders the Outreach Editor Page
  *
- * @remarks
- * This method is part of the {@link core-library#Statistics | Statistics subsystem}.
- *
- * @param x - The first input number
- * @param y - The second input number
- * @returns The arithmetic mean of `x` and `y`
+ * @returns a React Component that contains the editor that
+ *  allows us to edit the Outreach email and subject
  *
  * @beta
  */
@@ -114,6 +110,16 @@ const OutReachEditorPage: React.FC<OutReachEditorPageProps> = (props) => {
   );
 };
 
+/**
+ * A function to determine if the editor has content changes, we compare the original
+ * outreach content/subject with the current editor content/subject
+ *
+ * @param state - the outreach editor state
+ *
+ * @returns a boolean
+ *
+ * @beta
+ */
 const isEditorChanged = (state: OutReachEditorReducerState) => {
   if (state === null) {
     debugger;

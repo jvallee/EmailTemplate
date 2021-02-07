@@ -23,6 +23,8 @@ import BorderBox from "../../common/BorderBox/BorderBox";
 import { TextField } from "@material-ui/core";
 import { ValleeBackendApi } from "../../../util/gen/api";
 
+// TODO: Delete this file, it is an old version of the Editor
+
 type OutReachEditorProps = {
   setQueryInfo?: Function;
   apiService?: ValleeBackendApi;
@@ -33,7 +35,7 @@ interface IUserPublicProfileRouteParams {
 }
 
 /**
- * @deprecated The method should not be used
+ * @deprecated The component should not be used
  */
 const OutReachEditorPage: React.FC<OutReachEditorProps> = (props) => {
   const { apiService } = props;
