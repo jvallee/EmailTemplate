@@ -78,18 +78,7 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'djangoProject.wsgi.application'
-# WSGI_APPLICATION = 'azuresite.wsgi.application'
 
-
-# Database
-# https://docs.djangoproject.com/en/3.1/ref/settings/#databases
-
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3',
-#     }
-# }
 
 DATABASES = {
 
@@ -97,7 +86,7 @@ DATABASES = {
 
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
 
-        'NAME': 'django_test',  # db name
+        'NAME': 'django_test',  # db name, will need to change or add to psql this does not exist by default
 
         'USER': 'postgres',  # postgres username
 
@@ -160,6 +149,7 @@ CORS_ORIGIN_WHITELIST = (
 
 SWAGGER_SETTINGS = {"DEFAULT_INFO": "djangoProject.urls.api_info"}
 
+# unused right now as we are using drf_yasg and not drf_spectacular
 SPECTACULAR_SETTINGS = {
     # path prefix is used for tagging the discovered operations.
     # use '/api/v[0-9]' for tagging apis like '/api/v1/albums' with ['albums']
