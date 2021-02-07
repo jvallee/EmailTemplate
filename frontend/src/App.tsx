@@ -7,13 +7,11 @@ import AllJobsPage from "./components/pages/Jobs/allJobs";
 import OutReachEditorPage from "./components/pages/OutReach/OutReach";
 import Header from "./components/common/Header/Header";
 
+const apiService = new ValleeBackendApi(undefined, "http://127.0.0.1:8000/api");
+
 function App() {
   const initialClient: Client = { name: "", jobs: [], id: 0 };
   const [client, setClient] = useState(initialClient);
-  const apiService = new ValleeBackendApi(
-    undefined,
-    "http://127.0.0.1:8000/api"
-  );
 
   return (
     <div>
