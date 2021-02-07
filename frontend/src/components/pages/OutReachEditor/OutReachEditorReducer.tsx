@@ -71,7 +71,7 @@ export default function reducer(
       return {
         ...state,
         isDirty: false,
-        content: action.payload.templateDraft ?? "",
+        content: action.payload.template_draft ?? "",
         job: action.payload,
         subject: action.payload.subject ?? "",
       };

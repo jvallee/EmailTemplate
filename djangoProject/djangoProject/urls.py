@@ -20,6 +20,7 @@ from django.urls import path, include                 # add this
 from drf_yasg import openapi
 # from drf_yasg.views import get_schema_view
 # from drf_spectacular import openapi
+from drf_yasg.views import get_schema_view
 from rest_framework import routers                    # add this
 from candidate import views as candidateviews
 from todo import views                            # add this
@@ -31,8 +32,8 @@ from drf_spectacular.views import SpectacularAPIView, SpectacularRedocView, Spec
 
 api_info = openapi.Info(
     title="Back End API",
-    default_version="v1",
     description="Dover Onsite Coding Challenge Backend",
+    default_version="0.0.1",
     terms_of_service="https://www.google.com/policies/terms/",
     contact=openapi.Contact(email="coding-challenge@dover.io"),
     license=openapi.License(name="No License"),
@@ -46,17 +47,17 @@ api_info = openapi.Info(
 #     terms_of_service="https://github.com/netbox-community/netbox",
 #     license=openapi.License(name="Apache v2 License"),
 # )
-# schema_view = get_schema_view(
-#     openapi_info,
-#     validators=['flex', 'ssv'],
-#     public=True,
-# )
+schema_view = get_schema_view(
+    api_info,
+    public=True,
+)
 
 router = routers.DefaultRouter()                      # add this
 router.register(r'todos', views.TodoView, 'todo')     # add this
 router.register(r'candidates', candidateviews.CandidateView, 'candidate')
 router.register(r'clients', clientsviews.ClientView)
 router.register(r'jobs', clientsviews.JobView)
+router.register(r'outreaches', clientsviews.OutreachView)
 
 urlpatterns = [
     path('admin/', admin.site.urls),

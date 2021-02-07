@@ -1,13 +1,12 @@
 import React from "react";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-import { ApiApi, Client } from "../../../util/gen/api/dist";
-// import { ApiApi, Client } from "../../../../util/gen/api/dist";
+import { ValleeBackendApi, Client } from "../../../util/gen/api/dist";
 
 type HomePageProps = {
   client: Client;
   setClient: React.Dispatch<React.SetStateAction<Client>>;
   setQueryInfo?: Function;
-  apiService?: ApiApi;
+  apiService?: ValleeBackendApi;
 };
 
 const HomePage: React.FC<HomePageProps> = (props) => {
@@ -15,9 +14,9 @@ const HomePage: React.FC<HomePageProps> = (props) => {
   const login = () => {
     debugger;
     console.log("clicked");
-    apiService?.apiClientsRetrieve(1).then((value) => {
+    apiService?.getClient(1).then((value) => {
       debugger;
-      props.setClient(value.data);
+      setClient(value.data);
     });
   };
   return (

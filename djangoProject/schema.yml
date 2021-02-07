@@ -1,14 +1,14 @@
 openapi: 3.0.3
 info:
-  title: ''
+  title: Test Backend
   version: 0.0.0
 paths:
   /api/candidates/:
     get:
-      operationId: api_candidates_list
+      operationId: candidatesList
       description: ''
       tags:
-      - api
+      - candidates
       security:
       - cookieAuth: []
       - basicAuth: []
@@ -23,10 +23,10 @@ paths:
                   $ref: '#/components/schemas/Candidate'
           description: ''
     post:
-      operationId: api_candidates_create
+      operationId: candidatesCreate
       description: ''
       tags:
-      - api
+      - candidates
       requestBody:
         content:
           application/json:
@@ -52,7 +52,7 @@ paths:
           description: ''
   /api/candidates/{id}/:
     get:
-      operationId: api_candidates_retrieve
+      operationId: candidatesRetrieve
       description: ''
       parameters:
       - in: path
@@ -62,7 +62,7 @@ paths:
         description: A unique integer value identifying this candidate.
         required: true
       tags:
-      - api
+      - candidates
       security:
       - cookieAuth: []
       - basicAuth: []
@@ -75,7 +75,7 @@ paths:
                 $ref: '#/components/schemas/Candidate'
           description: ''
     put:
-      operationId: api_candidates_update
+      operationId: candidatesUpdate
       description: ''
       parameters:
       - in: path
@@ -85,7 +85,7 @@ paths:
         description: A unique integer value identifying this candidate.
         required: true
       tags:
-      - api
+      - candidates
       requestBody:
         content:
           application/json:
@@ -110,7 +110,7 @@ paths:
                 $ref: '#/components/schemas/Candidate'
           description: ''
     patch:
-      operationId: api_candidates_partial_update
+      operationId: candidatesPartialUpdate
       description: ''
       parameters:
       - in: path
@@ -120,7 +120,7 @@ paths:
         description: A unique integer value identifying this candidate.
         required: true
       tags:
-      - api
+      - candidates
       requestBody:
         content:
           application/json:
@@ -144,7 +144,7 @@ paths:
                 $ref: '#/components/schemas/Candidate'
           description: ''
     delete:
-      operationId: api_candidates_destroy
+      operationId: candidatesDestroy
       description: ''
       parameters:
       - in: path
@@ -154,7 +154,484 @@ paths:
         description: A unique integer value identifying this candidate.
         required: true
       tags:
-      - api
+      - candidates
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '204':
+          description: No response body
+  /api/clients/:
+    get:
+      operationId: listClient
+      description: list client
+      tags:
+      - ValleeBackend
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Client'
+          description: ''
+    post:
+      operationId: createClient
+      description: create client
+      tags:
+      - ValleeBackend
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Client'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Client'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Client'
+        required: true
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Client'
+          description: ''
+  /api/clients/{id}/:
+    get:
+      operationId: getClient
+      description: retrieve client
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this client.
+        required: true
+      tags:
+      - ValleeBackend
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Client'
+          description: ''
+    put:
+      operationId: updateClient
+      description: update client
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this client.
+        required: true
+      tags:
+      - ValleeBackend
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Client'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Client'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Client'
+        required: true
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Client'
+          description: ''
+    patch:
+      operationId: partialUpdateClient
+      description: partial update client
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this client.
+        required: true
+      tags:
+      - ValleeBackend
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedClient'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedClient'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedClient'
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Client'
+          description: ''
+    delete:
+      operationId: clientsDestroy
+      description: ''
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this client.
+        required: true
+      tags:
+      - clients
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '204':
+          description: No response body
+  /api/jobs/:
+    get:
+      operationId: listJob
+      description: list job
+      tags:
+      - ValleeBackend
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Job'
+          description: ''
+    post:
+      operationId: createJob
+      description: create job
+      tags:
+      - ValleeBackend
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Job'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Job'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Job'
+        required: true
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Job'
+          description: ''
+  /api/jobs/{id}/:
+    get:
+      operationId: getJob
+      description: retrieve job
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this job.
+        required: true
+      tags:
+      - ValleeBackend
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Job'
+          description: ''
+    put:
+      operationId: updateJob
+      description: update job
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this job.
+        required: true
+      tags:
+      - ValleeBackend
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Job'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Job'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Job'
+        required: true
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Job'
+          description: ''
+    patch:
+      operationId: partialUpdateJob
+      description: partial update job
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this job.
+        required: true
+      tags:
+      - ValleeBackend
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedJob'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedJob'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedJob'
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Job'
+          description: ''
+    delete:
+      operationId: jobsDestroy
+      description: ''
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this job.
+        required: true
+      tags:
+      - jobs
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '204':
+          description: No response body
+  /api/outreaches/:
+    get:
+      operationId: listOutreach
+      description: list outreach
+      tags:
+      - ValleeBackend
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Outreach'
+          description: ''
+    post:
+      operationId: createOutreach
+      description: create outreach
+      tags:
+      - ValleeBackend
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Outreach'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Outreach'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Outreach'
+        required: true
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Outreach'
+          description: ''
+  /api/outreaches/{id}/:
+    get:
+      operationId: getOutreach
+      description: retrieve outreach
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this outreach.
+        required: true
+      tags:
+      - ValleeBackend
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Outreach'
+          description: ''
+    put:
+      operationId: updateOutreach
+      description: update outreach
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this outreach.
+        required: true
+      tags:
+      - ValleeBackend
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Outreach'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Outreach'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Outreach'
+        required: true
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Outreach'
+          description: ''
+    patch:
+      operationId: partialUpdateOutreach
+      description: partial update outreach
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this outreach.
+        required: true
+      tags:
+      - ValleeBackend
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedOutreach'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedOutreach'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedOutreach'
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Outreach'
+          description: ''
+    delete:
+      operationId: outreachesDestroy
+      description: ''
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this outreach.
+        required: true
+      tags:
+      - outreaches
       security:
       - cookieAuth: []
       - basicAuth: []
@@ -164,7 +641,7 @@ paths:
           description: No response body
   /api/schema/:
     get:
-      operationId: api_schema_retrieve
+      operationId: schemaRetrieve
       description: |-
         OpenApi3 schema for this API. Format can be selected via content negotiation.
 
@@ -280,7 +757,7 @@ paths:
           - zh-hans
           - zh-hant
       tags:
-      - api
+      - schema
       security:
       - cookieAuth: []
       - basicAuth: []
@@ -307,10 +784,10 @@ paths:
           description: ''
   /api/todos/:
     get:
-      operationId: api_todos_list
+      operationId: todosList
       description: ''
       tags:
-      - api
+      - todos
       security:
       - cookieAuth: []
       - basicAuth: []
@@ -325,10 +802,10 @@ paths:
                   $ref: '#/components/schemas/Todo'
           description: ''
     post:
-      operationId: api_todos_create
+      operationId: todosCreate
       description: ''
       tags:
-      - api
+      - todos
       requestBody:
         content:
           application/json:
@@ -354,7 +831,7 @@ paths:
           description: ''
   /api/todos/{id}/:
     get:
-      operationId: api_todos_retrieve
+      operationId: todosRetrieve
       description: ''
       parameters:
       - in: path
@@ -364,7 +841,7 @@ paths:
         description: A unique integer value identifying this todo.
         required: true
       tags:
-      - api
+      - todos
       security:
       - cookieAuth: []
       - basicAuth: []
@@ -377,7 +854,7 @@ paths:
                 $ref: '#/components/schemas/Todo'
           description: ''
     put:
-      operationId: api_todos_update
+      operationId: todosUpdate
       description: ''
       parameters:
       - in: path
@@ -387,7 +864,7 @@ paths:
         description: A unique integer value identifying this todo.
         required: true
       tags:
-      - api
+      - todos
       requestBody:
         content:
           application/json:
@@ -412,7 +889,7 @@ paths:
                 $ref: '#/components/schemas/Todo'
           description: ''
     patch:
-      operationId: api_todos_partial_update
+      operationId: todosPartialUpdate
       description: ''
       parameters:
       - in: path
@@ -422,7 +899,7 @@ paths:
         description: A unique integer value identifying this todo.
         required: true
       tags:
-      - api
+      - todos
       requestBody:
         content:
           application/json:
@@ -446,7 +923,7 @@ paths:
                 $ref: '#/components/schemas/Todo'
           description: ''
     delete:
-      operationId: api_todos_destroy
+      operationId: todosDestroy
       description: ''
       parameters:
       - in: path
@@ -456,7 +933,7 @@ paths:
         description: A unique integer value identifying this todo.
         required: true
       tags:
-      - api
+      - todos
       security:
       - cookieAuth: []
       - basicAuth: []
@@ -482,6 +959,94 @@ components:
       - custom
       - name
       - years_experience
+    Client:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        jobs:
+          type: array
+          items:
+            $ref: '#/components/schemas/Job'
+          readOnly: true
+          nullable: true
+        name:
+          type: string
+          maxLength: 120
+      required:
+      - id
+      - jobs
+      - name
+    Job:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        outreaches:
+          type: array
+          items:
+            $ref: '#/components/schemas/Outreach'
+          readOnly: true
+          nullable: true
+        created:
+          type: string
+          format: date-time
+          readOnly: true
+        modified:
+          type: string
+          format: date-time
+          readOnly: true
+        name:
+          type: string
+          maxLength: 240
+        template:
+          type: string
+        hasDraft:
+          type: boolean
+        templateDraft:
+          type: string
+        subject:
+          type: string
+          maxLength: 140
+        poster:
+          type: integer
+      required:
+      - created
+      - id
+      - modified
+      - name
+      - outreaches
+      - poster
+      - template
+    Outreach:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        created:
+          type: string
+          format: date-time
+          readOnly: true
+        modified:
+          type: string
+          format: date-time
+          readOnly: true
+        state:
+          $ref: '#/components/schemas/StateEnum'
+        editor_state:
+          type: object
+          additionalProperties: {}
+          nullable: true
+        job:
+          type: integer
+      required:
+      - created
+      - id
+      - job
+      - modified
     PatchedCandidate:
       type: object
       properties:
@@ -494,6 +1059,77 @@ components:
           minimum: -1000
         custom:
           type: string
+    PatchedClient:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        jobs:
+          type: array
+          items:
+            $ref: '#/components/schemas/Job'
+          readOnly: true
+          nullable: true
+        name:
+          type: string
+          maxLength: 120
+    PatchedJob:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        outreaches:
+          type: array
+          items:
+            $ref: '#/components/schemas/Outreach'
+          readOnly: true
+          nullable: true
+        created:
+          type: string
+          format: date-time
+          readOnly: true
+        modified:
+          type: string
+          format: date-time
+          readOnly: true
+        name:
+          type: string
+          maxLength: 240
+        template:
+          type: string
+        hasDraft:
+          type: boolean
+        templateDraft:
+          type: string
+        subject:
+          type: string
+          maxLength: 140
+        poster:
+          type: integer
+    PatchedOutreach:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        created:
+          type: string
+          format: date-time
+          readOnly: true
+        modified:
+          type: string
+          format: date-time
+          readOnly: true
+        state:
+          $ref: '#/components/schemas/StateEnum'
+        editor_state:
+          type: object
+          additionalProperties: {}
+          nullable: true
+        job:
+          type: integer
     PatchedTodo:
       type: object
       properties:
@@ -507,6 +1143,11 @@ components:
           type: string
         completed:
           type: boolean
+    StateEnum:
+      enum:
+      - DRAFT
+      - FINALIZED
+      type: string
     Todo:
       type: object
       properties:

@@ -1,0 +1,27 @@
+.EditorHeader {
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 10px;
+    /* padding-left: 20px;
+    padding-right: 20px; */
+}
+
+.OutReachEditor_root {
+    padding-left: 20px;
+    padding-right: 20px;
+    margin-top: 20px;
+}
+
+.row_container {
+    display: flex;
+    flex-direction: column;
+}
+
+.outreach_button {
+    margin-top: 10px;
+    height: 30px;
+}
+
+.OutReachEditor_root .public-DraftEditor-content {
+    min-height: 300px;
+}

@@ -1,5 +1,5 @@
 import React, { ChangeEvent, useEffect, useReducer, useState } from "react";
-import { ApiApi, Job } from "../../../util/gen/api/dist";
+import { Job } from "../../../util/gen/api/dist";
 import { convertToRaw, EditorState, ContentState } from "draft-js";
 import { Editor, RawDraftContentState } from "react-draft-wysiwyg";
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
@@ -21,10 +21,11 @@ import Button from "../../common/Button/Button";
 import HeaderContainer from "../../common/HeaderContainer/HeaderContainer";
 import BorderBox from "../../common/BorderBox/BorderBox";
 import { TextField } from "@material-ui/core";
+import { ValleeBackendApi } from "../../../util/gen/api";
 
 type OutReachEditorProps = {
   setQueryInfo?: Function;
-  apiService?: ApiApi;
+  apiService?: ValleeBackendApi;
 };
 
 interface IUserPublicProfileRouteParams {
@@ -57,7 +58,7 @@ const OutReachEditorPage: React.FC<OutReachEditorProps> = (props) => {
   };
 
   const useDraftHandler = () => {
-    modalClickHelper(state.job?.templateDraft ?? "");
+    modalClickHelper(state.job?.template_draft ?? "");
   };
 
   const useSavedHandler = () => {
@@ -85,11 +86,11 @@ const OutReachEditorPage: React.FC<OutReachEditorProps> = (props) => {
 
   const save = (value: string) => {
     apiService
-      ?.apiJobsUpdate(id, {
+      ?.updateJob(id, {
         ...state.job,
         template: value,
         hasDraft: false,
-        templateDraft: value,
+        template_draft: value,
         subject: state.subject,
       } as Job)
       .then((value) => {
@@ -156,11 +157,11 @@ const OutReachEditorPage: React.FC<OutReachEditorProps> = (props) => {
 const loadDataIn = (
   id: number,
   dispatch: (value: OutReachEditorActions) => void,
-  apiService?: ApiApi
+  apiService?: ValleeBackendApi
 ) => {
-  apiService?.apiJobsRetrieve(id).then((value) => {
+  apiService?.getJob(id).then((value) => {
     dispatch({ type: "EDITOR_LOAD_JOB", payload: value.data });
-    if (value.data.hasDraft) {
+    if (value.data.has_draft) {
       dispatch({ type: "OPEN_MODAL" });
     } else {
       var initialEditorState = stringToEditorState(value.data.template ?? "");
@@ -173,19 +174,19 @@ const editorEditedHandler = (
   id: number,
   state: OutReachEditorReducerState,
   dispatch: (value: OutReachEditorActions) => void,
-  apiService?: ApiApi
+  apiService?: ValleeBackendApi
 ) => {
   if (state.editorState?.getCurrentContent() == undefined) {
     console.error("should not be happening, editorState should be defined");
     return;
   }
   const editor_conent = getEditorContentAsString(state.editorState);
-  if (state.job?.templateDraft !== editor_conent) {
+  if (state.job?.template_draft !== editor_conent) {
     debugger;
     apiService
-      ?.apiJobsUpdate(id, {
+      ?.updateJob(id, {
         ...state.job,
-        templateDraft: editor_conent,
+        template_draft: editor_conent,
         hasDraft: true,
         subject: state.subject,
       } as Job)

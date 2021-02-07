@@ -1,7 +1,5 @@
 import React, { CSSProperties, useEffect } from "react";
 import "./Button.css";
-import { Link } from "react-router-dom";
-import { ApiApi, Job } from "../../../util/gen/api/dist";
 
 type ButtonProps = {
   className?: string;
@@ -11,9 +9,10 @@ type ButtonProps = {
 >;
 
 const Button: React.FC<ButtonProps> = (props) => {
+  const buttonClassname = "button_class " + (props.className ?? "");
   return (
-    <div className={props.className ?? "button_root"}>
-      <button className={"button_class"} {...props}>
+    <div className={"button_root"}>
+      <button {...props} className={buttonClassname}>
         {props.children}
       </button>
     </div>

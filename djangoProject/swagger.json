@@ -10,7 +10,7 @@
         "license": {
             "name": "No License"
         },
-        "version": "v1"
+        "version": "0.0.1"
     },
     "basePath": "/api",
     "consumes": [
@@ -169,7 +169,7 @@
         },
         "/clients/": {
             "get": {
-                "operationId": "clients_list",
+                "operationId": "listClient",
                 "description": "",
                 "parameters": [],
                 "responses": {
@@ -184,11 +184,11 @@
                     }
                 },
                 "tags": [
-                    "clients"
+                    "ValleeBackend"
                 ]
             },
             "post": {
-                "operationId": "clients_create",
+                "operationId": "createClient",
                 "description": "",
                 "parameters": [
                     {
@@ -209,14 +209,14 @@
                     }
                 },
                 "tags": [
-                    "clients"
+                    "ValleeBackend"
                 ]
             },
             "parameters": []
         },
         "/clients/{id}/": {
             "get": {
-                "operationId": "clients_read",
+                "operationId": "getClient",
                 "description": "",
                 "parameters": [],
                 "responses": {
@@ -228,11 +228,11 @@
                     }
                 },
                 "tags": [
-                    "clients"
+                    "ValleeBackend"
                 ]
             },
             "put": {
-                "operationId": "clients_update",
+                "operationId": "updateClient",
                 "description": "",
                 "parameters": [
                     {
@@ -253,11 +253,11 @@
                     }
                 },
                 "tags": [
-                    "clients"
+                    "ValleeBackend"
                 ]
             },
             "patch": {
-                "operationId": "clients_partial_update",
+                "operationId": "partialUpdateClient",
                 "description": "",
                 "parameters": [
                     {
@@ -278,7 +278,7 @@
                     }
                 },
                 "tags": [
-                    "clients"
+                    "ValleeBackend"
                 ]
             },
             "delete": {
@@ -306,7 +306,7 @@
         },
         "/jobs/": {
             "get": {
-                "operationId": "jobs_list",
+                "operationId": "listJob",
                 "description": "",
                 "parameters": [],
                 "responses": {
@@ -321,11 +321,11 @@
                     }
                 },
                 "tags": [
-                    "jobs"
+                    "ValleeBackend"
                 ]
             },
             "post": {
-                "operationId": "jobs_create",
+                "operationId": "createJob",
                 "description": "",
                 "parameters": [
                     {
@@ -346,14 +346,14 @@
                     }
                 },
                 "tags": [
-                    "jobs"
+                    "ValleeBackend"
                 ]
             },
             "parameters": []
         },
         "/jobs/{id}/": {
             "get": {
-                "operationId": "jobs_read",
+                "operationId": "getJob",
                 "description": "",
                 "parameters": [],
                 "responses": {
@@ -365,11 +365,11 @@
                     }
                 },
                 "tags": [
-                    "jobs"
+                    "ValleeBackend"
                 ]
             },
             "put": {
-                "operationId": "jobs_update",
+                "operationId": "updateJob",
                 "description": "",
                 "parameters": [
                     {
@@ -390,11 +390,11 @@
                     }
                 },
                 "tags": [
-                    "jobs"
+                    "ValleeBackend"
                 ]
             },
             "patch": {
-                "operationId": "jobs_partial_update",
+                "operationId": "partialUpdateJob",
                 "description": "",
                 "parameters": [
                     {
@@ -415,7 +415,7 @@
                     }
                 },
                 "tags": [
-                    "jobs"
+                    "ValleeBackend"
                 ]
             },
             "delete": {
@@ -436,6 +436,173 @@
                     "name": "id",
                     "in": "path",
                     "description": "A unique integer value identifying this job.",
+                    "required": true,
+                    "type": "integer"
+                }
+            ]
+        },
+        "/jobs/{id}/outreach_list/": {
+            "get": {
+                "operationId": "jobs_outreach_list",
+                "description": "",
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/Outreach"
+                            }
+                        }
+                    }
+                },
+                "tags": [
+                    "ValleeBackend"
+                ]
+            },
+            "parameters": [
+                {
+                    "name": "id",
+                    "in": "path",
+                    "description": "A unique integer value identifying this job.",
+                    "required": true,
+                    "type": "integer"
+                }
+            ]
+        },
+        "/outreaches/": {
+            "get": {
+                "operationId": "listOutreach",
+                "description": "",
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/Outreach"
+                            }
+                        }
+                    }
+                },
+                "tags": [
+                    "ValleeBackend"
+                ]
+            },
+            "post": {
+                "operationId": "createOutreach",
+                "description": "",
+                "parameters": [
+                    {
+                        "name": "data",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/Outreach"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/Outreach"
+                        }
+                    }
+                },
+                "tags": [
+                    "ValleeBackend"
+                ]
+            },
+            "parameters": []
+        },
+        "/outreaches/{id}/": {
+            "get": {
+                "operationId": "getOutreach",
+                "description": "",
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/Outreach"
+                        }
+                    }
+                },
+                "tags": [
+                    "ValleeBackend"
+                ]
+            },
+            "put": {
+                "operationId": "updateOutreach",
+                "description": "",
+                "parameters": [
+                    {
+                        "name": "data",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/Outreach"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/Outreach"
+                        }
+                    }
+                },
+                "tags": [
+                    "ValleeBackend"
+                ]
+            },
+            "patch": {
+                "operationId": "partialUpdateOutreach",
+                "description": "",
+                "parameters": [
+                    {
+                        "name": "data",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/Outreach"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/Outreach"
+                        }
+                    }
+                },
+                "tags": [
+                    "ValleeBackend"
+                ]
+            },
+            "delete": {
+                "operationId": "outreaches_delete",
+                "description": "",
+                "parameters": [],
+                "responses": {
+                    "204": {
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "outreaches"
+                ]
+            },
+            "parameters": [
+                {
+                    "name": "id",
+                    "in": "path",
+                    "description": "A unique integer value identifying this outreach.",
                     "required": true,
                     "type": "integer"
                 }
@@ -662,6 +829,49 @@
                 }
             }
         },
+        "Outreach": {
+            "required": [
+                "job"
+            ],
+            "type": "object",
+            "properties": {
+                "id": {
+                    "title": "ID",
+                    "type": "integer",
+                    "readOnly": true
+                },
+                "created": {
+                    "title": "Created",
+                    "type": "string",
+                    "format": "date-time",
+                    "readOnly": true
+                },
+                "modified": {
+                    "title": "Modified",
+                    "type": "string",
+                    "format": "date-time",
+                    "readOnly": true
+                },
+                "state": {
+                    "title": "State",
+                    "type": "string",
+                    "enum": [
+                        "DRAFT",
+                        "FINALIZED"
+                    ]
+                },
+                "editor_state": {
+                    "title": "Editor state",
+                    "type": "object",
+                    "x-nullable": true
+                },
+                "job": {
+                    "title": "Job",
+                    "type": "integer"
+                }
+            },
+            "x-nullable": true
+        },
         "Job": {
             "required": [
                 "name",
@@ -673,6 +883,26 @@
                 "id": {
                     "title": "ID",
                     "type": "integer",
+                    "readOnly": true
+                },
+                "outreaches": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/Outreach"
+                    },
+                    "readOnly": true,
+                    "x-nullable": true
+                },
+                "created": {
+                    "title": "Created",
+                    "type": "string",
+                    "format": "date-time",
+                    "readOnly": true
+                },
+                "modified": {
+                    "title": "Modified",
+                    "type": "string",
+                    "format": "date-time",
                     "readOnly": true
                 },
                 "name": {

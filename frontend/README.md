@@ -1,46 +1,85 @@
-# Getting Started with Create React App
+# OpenAPI Generator for the default library
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Overview
+This is a boiler-plate project to generate your own project derived from an OpenAPI specification.
+Its goal is to get you started with the basic plumbing so you can put in your own logic.
+It won't work without your changes applied.
 
-## Available Scripts
+## What's OpenAPI
+The goal of OpenAPI is to define a standard, language-agnostic interface to REST APIs which allows both humans and computers to discover and understand the capabilities of the service without access to source code, documentation, or through network traffic inspection.
+When properly described with OpenAPI, a consumer can understand and interact with the remote service with a minimal amount of implementation logic.
+Similar to what interfaces have done for lower-level programming, OpenAPI removes the guesswork in calling the service.
 
-In the project directory, you can run:
+Check out [OpenAPI-Spec](https://github.com/OAI/OpenAPI-Specification) for additional information about the OpenAPI project, including additional libraries with support for other languages and more. 
 
-### `yarn start`
+## How do I use this?
+At this point, you've likely generated a client setup.  It will include something along these lines:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+```
+.
+|- README.md    // this file
+|- pom.xml      // build script
+|-- src
+|--- main
+|---- java
+|----- org.openapitools.codegen.DefaultGenerator.java // generator file
+|---- resources
+|----- default // template files
+|----- META-INF
+|------ services
+|------- org.openapitools.codegen.CodegenConfig
+```
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+You _will_ need to make changes in at least the following:
 
-### `yarn test`
+`DefaultGenerator.java`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Templates in this folder:
 
-### `yarn build`
+`src/main/resources/default`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Once modified, you can run this:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+```
+mvn package
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+In your generator project. A single jar file will be produced in `target`. You can now use that with [OpenAPI Generator](https://openapi-generator.tech):
 
-### `yarn eject`
+For mac/linux:
+```
+java -cp /path/to/openapi-generator-cli.jar:/path/to/your.jar org.openapitools.codegen.OpenAPIGenerator generate -g default -i /path/to/openapi.yaml -o ./test
+```
+(Do not forget to replace the values `/path/to/openapi-generator-cli.jar`, `/path/to/your.jar` and `/path/to/openapi.yaml` in the previous command)
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+For Windows users, you will need to use `;` instead of `:` in the classpath, e.g.
+```
+java -cp /path/to/openapi-generator-cli.jar;/path/to/your.jar org.openapitools.codegen.OpenAPIGenerator generate -g default -i /path/to/openapi.yaml -o ./test
+```
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Now your templates are available to the client generator and you can write output values
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+## But how do I modify this?
+The `DefaultGenerator.java` has comments in it--lots of comments.  There is no good substitute
+for reading the code more, though.  See how the `DefaultGenerator` implements `CodegenConfig`.
+That class has the signature of all values that can be overridden.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+You can also step through DefaultGenerator.java in a debugger.  Just debug the JUnit
+test in DebugCodegenLauncher.  That runs the command line tool and lets you inspect what the code is doing.  
 
-## Learn More
+For the templates themselves, you have a number of values available to you for generation.
+You can execute the `java` command from above while passing different debug flags to show
+the object you have available during client generation:
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+```
+# The following additional debug options are available for all codegen targets:
+# -DdebugOpenAPI prints the OpenAPI Specification as interpreted by the codegen
+# -DdebugModels prints models passed to the template engine
+# -DdebugOperations prints operations passed to the template engine
+# -DdebugSupportingFiles prints additional data passed to the template engine
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+java -DdebugOperations -cp /path/to/openapi-generator-cli.jar:/path/to/your.jar org.openapitools.codegen.OpenAPIGenerator generate -g default -i /path/to/openapi.yaml -o ./test
+```
+
+Will, for example, output the debug info for operations.
+You can use this info in the `api.mustache` file.
