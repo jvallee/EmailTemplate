@@ -62,18 +62,18 @@ this step (ignoring is not recommended).
 
 5. then type "pip3 install -r requirements.txt" and hit return (again make sure you have installed postgres)
 
-5b. It is possible you get an error regarding installing psycopg2, a possible fix would be to install psycopg2-binary, but I'd recommend a cursory google search on said error before doing anything.
+6. It is possible you get an error regarding installing psycopg2, a possible fix would be to install psycopg2-binary, but I'd recommend a cursory google search on said error before doing anything.
 
-6. Now in djangoProject/djangoProject/settings.py you will need to update the Databases dictionary with the proper attributes. Alternatively, you could create a database that matches the database name in postgres. Do this by running "psql" in your terminal and then running "CREATE DATABASE django_test", is is possible you will get an error that your username is not initiated, if so a simple google search will tell you how to create a postgres user. 
-6b. Make sure you have actually started postgres. This is optional but recommended. Run "python manage.py loaddata initDb.json" to load in some initial data
+7. Now in djangoProject/djangoProject/settings.py you will need to update the Databases dictionary with the proper attributes. Alternatively, you could create a database that matches the database name in postgres. Do this by running "psql" in your terminal and then running "CREATE DATABASE django_test", is is possible you will get an error that your username is not initiated, if so a simple google search will tell you how to create a postgres user. 
+8. Make sure you have actually started postgres. This is optional but recommended. Run "python manage.py loaddata initDb.json" to load in some initial data
 
-7. "bash generate_client_api.sh" this will regenerate the client api, make sure opanapi-generator is installed
+9. "bash generate_client_api.sh" this will regenerate the client api, make sure opanapi-generator is installed
    
-8. To start the backend run "python manage.py runserver",    
+10. To start the backend run "python manage.py runserver",    
 
-9. For the frontend navigate to EmailTemplate/frontend and run npm install.
+11. For the frontend navigate to EmailTemplate/frontend and run npm install.
 
-10. After that run npm start, to start up the frontend
+12. After that run npm start, to start up the frontend
 
 
 Now that you have the application running, click the login button, and then hit the all jobs link to see a list of jobs that you can edit the outreach template for. Note: if you did not load in the initial data, this page will be blank. Once on the all jobs page select any job and you will be taken to the editor and then we will pull the associated data for that editor.
