@@ -36,7 +36,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "api": "rm -rf src/util/gen/api && openapi-generator generate -i /Users/jasonmichaelvallee/PycharmProjects/todo-react-django/EmailTemplate/djangoProject/swagger.json --generator-name typescript-axios --type-mappings object=any -o src/util/gen/api --config api.json && cd src/util/gen/api && npm install && npm run build && npm audit fix"
+    "api": "rm -rf src/util/gen/api && openapi-generator generate -i ../djangoProject/swagger.json --generator-name typescript-axios --type-mappings object=any -o src/util/gen/api --config api.json && cd src/util/gen/api && npm install && npm run build && npm audit fix"
   },
   "eslintConfig": {
     "extends": [
