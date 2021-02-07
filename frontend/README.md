@@ -1,85 +1,81 @@
-# OpenAPI Generator for the default library
+CONTENTS OF THIS FILE
+---------------------
 
-## Overview
-This is a boiler-plate project to generate your own project derived from an OpenAPI specification.
-Its goal is to get you started with the basic plumbing so you can put in your own logic.
-It won't work without your changes applied.
+ * Introduction
+ * Requirements
+ * Recommended modules
+ * Installation
+ * Application Architecture 
+ * Testing
+ * Bonus Content
+ * FAQ
+ * Maintainers
+ 
+ 
+ INTRODUCTION
+------------
 
-## What's OpenAPI
-The goal of OpenAPI is to define a standard, language-agnostic interface to REST APIs which allows both humans and computers to discover and understand the capabilities of the service without access to source code, documentation, or through network traffic inspection.
-When properly described with OpenAPI, a consumer can understand and interact with the remote service with a minimal amount of implementation logic.
-Similar to what interfaces have done for lower-level programming, OpenAPI removes the guesswork in calling the service.
+This README is currently under construction
 
-Check out [OpenAPI-Spec](https://github.com/OAI/OpenAPI-Specification) for additional information about the OpenAPI project, including additional libraries with support for other languages and more. 
 
-## How do I use this?
-At this point, you've likely generated a client setup.  It will include something along these lines:
 
-```
-.
-|- README.md    // this file
-|- pom.xml      // build script
-|-- src
-|--- main
-|---- java
-|----- org.openapitools.codegen.DefaultGenerator.java // generator file
-|---- resources
-|----- default // template files
-|----- META-INF
-|------ services
-|------- org.openapitools.codegen.CodegenConfig
-```
+ * This application was developed in PyCharm, recommended that be used to debug but not by any means required
+   
+   
+REQUIREMENTS
+------------
 
-You _will_ need to make changes in at least the following:
+This application requires the following modules:
 
-`DefaultGenerator.java`
+ * django
+ * open-api-generator
+ 
+ For this application to work it also requires that postgres be installed and running, and that python3 be installed.
+ For info on installing python look [here](https://realpython.com/installing-python/) and for info on mongodb look here
+ [here](https://docs.mongodb.com/manual/administration/install-community/) 
+ 
+ 
+ INSTALLATION
+------------
+ 
+Note: these setup instruction are mac specific, but can be applied to windows with little to no changes.
 
-Templates in this folder:
 
-`src/main/resources/default`
+ 
+ 
+APPLICATION ARCHITECTURE/DESCRIPTION
+------------
+###  Apartment Management
+The goal of this application is to add the user in managing one too many apartments. An apartment consists of occupants 
+and tasks; it is important to note that the user does not need to be an occupant to manage the apartment. Tasks can be
+recurring or one offs, decided by the user upon task creation. 
 
-Once modified, you can run this:
 
-```
-mvn package
-```
 
-In your generator project. A single jar file will be produced in `target`. You can now use that with [OpenAPI Generator](https://openapi-generator.tech):
+TESTING
+------
+After running the application enter "t" in the terminal to enter testing mode. 
 
-For mac/linux:
-```
-java -cp /path/to/openapi-generator-cli.jar:/path/to/your.jar org.openapitools.codegen.OpenAPIGenerator generate -g default -i /path/to/openapi.yaml -o ./test
-```
-(Do not forget to replace the values `/path/to/openapi-generator-cli.jar`, `/path/to/your.jar` and `/path/to/openapi.yaml` in the previous command)
+FAQ
+---
 
-For Windows users, you will need to use `;` instead of `:` in the classpath, e.g.
-```
-java -cp /path/to/openapi-generator-cli.jar;/path/to/your.jar org.openapitools.codegen.OpenAPIGenerator generate -g default -i /path/to/openapi.yaml -o ./test
-```
+Q: Does this application work on windows? <br/>
+A: Yes it does. However, for best UI experience we recommend that you use a mac due to added text coloring that is not 
+guaranteed to function properly in windows.
 
-Now your templates are available to the client generator and you can write output values
+Q: The test in the terminal is hard to see, is there any way to change that? <br/>
+A: This might be due to the fact that your terminal background color is white. It is an aesthetically better 
+experience if your terminal's background is not set to the default white but rather black. 
 
-## But how do I modify this?
-The `DefaultGenerator.java` has comments in it--lots of comments.  There is no good substitute
-for reading the code more, though.  See how the `DefaultGenerator` implements `CodegenConfig`.
-That class has the signature of all values that can be overridden.
+Q: Whe I first try to run this program I get this error in the terminal 'No connection could be made because the 
+target machine actively refused it', how do i fix this? <br/>
+A: This is probably because you do not have mongodb installed and if you do have it installed you do not have it 
+running. Look at the link provided above for installing it and if you need help starting it look 
+[here for windows](https://docs.mongodb.com/manual/tutorial/install-mongodb-on-windows/) and 
+[here for mac](https://docs.mongodb.com/manual/tutorial/install-mongodb-on-os-x/)
 
-You can also step through DefaultGenerator.java in a debugger.  Just debug the JUnit
-test in DebugCodegenLauncher.  That runs the command line tool and lets you inspect what the code is doing.  
+MAINTAINERS
+-----------
 
-For the templates themselves, you have a number of values available to you for generation.
-You can execute the `java` command from above while passing different debug flags to show
-the object you have available during client generation:
-
-```
-# The following additional debug options are available for all codegen targets:
-# -DdebugOpenAPI prints the OpenAPI Specification as interpreted by the codegen
-# -DdebugModels prints models passed to the template engine
-# -DdebugOperations prints operations passed to the template engine
-# -DdebugSupportingFiles prints additional data passed to the template engine
-
-java -DdebugOperations -cp /path/to/openapi-generator-cli.jar:/path/to/your.jar org.openapitools.codegen.OpenAPIGenerator generate -g default -i /path/to/openapi.yaml -o ./test
-```
-
-Will, for example, output the debug info for operations.
-You can use this info in the `api.mustache` file.
+Current maintainers:
+ * Jason Vallee - last updated November 2, 2020
