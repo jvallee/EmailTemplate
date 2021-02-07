@@ -20,7 +20,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
-# SECURITY WARNING: keep the secret key used in production secret!
+# SECURITY WARNING: Make sure to obfuscate and keep this a secret for production
 SECRET_KEY = '-b!fg15apnt%+g_eze_0x*)l1kk!ze%_178anysh0fd*54x7%('
 
 # SECURITY WARNING: don't run with debug turned on in production!
@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'corsheaders',
+    'django_extensions',
     'rest_framework',
     'rest_framework_swagger',
     'todo',
@@ -166,7 +167,7 @@ SWAGGER_SETTINGS = {"DEFAULT_INFO": "djangoProject.urls.api_info"}
 SPECTACULAR_SETTINGS = {
     # path prefix is used for tagging the discovered operations.
     # use '/api/v[0-9]' for tagging apis like '/api/v1/albums' with ['albums']
-    'SCHEMA_PATH_PREFIX': r'',
+    'SCHEMA_PATH_PREFIX': r'/api',
     'DEFAULT_GENERATOR_CLASS': 'drf_spectacular.generators.SchemaGenerator',
 
     # Schema generation parameters to influence how components are constructed.
@@ -232,7 +233,7 @@ SPECTACULAR_SETTINGS = {
     'GET_MOCK_REQUEST': 'drf_spectacular.plumbing.build_mock_request',
 
     # Camelize names like operationId and path parameter names
-    'CAMELIZE_NAMES': False,
+    'CAMELIZE_NAMES': True,
 
     # Determines if and how free-form 'additionalProperties' should be emitted in the schema. Some
     # code generator targets are sensitive to this. None disables generic 'additionalProperties'.

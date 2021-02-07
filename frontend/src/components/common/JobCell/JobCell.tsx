@@ -1,11 +1,11 @@
 import React, { CSSProperties, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { ApiApi, Job } from "../../../util/gen/api/dist";
+import { ValleeBackendApi, Job } from "../../../util/gen/api/dist";
 import "./JobCell.css";
 
 type JobCellProps = {
   job: Job;
-  apiService?: ApiApi;
+  apiService?: ValleeBackendApi;
 };
 
 const myStyles: CSSProperties = {
