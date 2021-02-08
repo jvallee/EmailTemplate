@@ -58,7 +58,6 @@ export default function reducer(
   switch (action.type) {
     case "EDITOR_LOADED_200":
       const isModallOpen = action.payload.hasDraft.finalIndex !== undefined;
-      debugger;
       return {
         ...state,
         outreach: action.payload.outreach,

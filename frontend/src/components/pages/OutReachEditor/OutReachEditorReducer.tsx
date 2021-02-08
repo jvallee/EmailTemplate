@@ -53,7 +53,6 @@ export default function reducer(
   state: OutReachEditorReducerState,
   action: OutReachEditorActions
 ): OutReachEditorReducerState {
-  debugger;
   switch (action.type) {
     case "EDITOR_EDITED_200":
       return { ...state, editorState: action.payload, isDirty: true };

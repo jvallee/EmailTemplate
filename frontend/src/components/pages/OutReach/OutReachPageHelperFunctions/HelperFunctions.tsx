@@ -70,8 +70,6 @@ export function saveClickHandler(
   dispatch: React.Dispatch<OutReachEditorActions>,
   apiService: ValleeBackendApi
 ) {
-  debugger;
-  /* TODO: create new reducer action to update  state with returned value from api */
   if (
     state.outreach?.id &&
     state.outreach?.state !== OutreachStateEnum.Finalized

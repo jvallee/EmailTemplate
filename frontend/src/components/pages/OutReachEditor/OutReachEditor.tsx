@@ -187,7 +187,6 @@ const editorEditedHandler = (
   }
   const editor_conent = getEditorContentAsString(state.editorState);
   if (state.job?.template_draft !== editor_conent) {
-    debugger;
     apiService
       ?.updateJob(id, {
         ...state.job,
@@ -196,7 +195,6 @@ const editorEditedHandler = (
         subject: state.subject,
       } as Job)
       .then((value) => {
-        debugger;
         dispatch({
           type: "EDITOR_POSTED",
           payload: value.data ?? "",

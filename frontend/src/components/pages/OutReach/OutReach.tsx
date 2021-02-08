@@ -122,7 +122,6 @@ const OutReachEditorPage: React.FC<OutReachEditorPageProps> = (props) => {
  */
 const isEditorChanged = (state: OutReachEditorReducerState) => {
   if (state === null) {
-    debugger;
     return false;
   }
   return !(
