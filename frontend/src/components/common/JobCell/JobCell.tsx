@@ -7,7 +7,7 @@ type JobCellProps = {
   job: Job;
   apiService?: ValleeBackendApi;
 };
-
+// TODO: make this more customizable so can be used outside of only jobs
 const JobCell: React.FC<JobCellProps> = (props) => {
   const { job } = props;
 

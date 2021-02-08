@@ -1,5 +1,3 @@
-import { AxiosResponse } from "axios";
-import { ContentState, convertToRaw, EditorState } from "draft-js";
 import {
   Outreach,
   OutreachStateEnum,
@@ -16,7 +14,17 @@ export type HasDraftReturnType = {
   finalIndex?: number;
 };
 
-// Will return false if most recent is not draft; true and index of most recent published if exists
+/**
+ * a function that will return false if most recent is not draft; else will
+ * true and index of most recent published if exists. Note: will never
+ * return index if does not have a draft before the most recent published
+ *
+ * @param data - array of outreaches sorted by creation date
+ *
+ * @returns nothing
+ *
+ * @beta
+ */
 export function hasDraft(data: Outreach[]): HasDraftReturnType {
   var firstDraft: undefined | Outreach = undefined;
   if (data.length !== 0) {
@@ -44,7 +52,18 @@ export function isEditorChanged(state: OutReachEditorReducerState) {
   );
 }
 
-/*TODO: show document history, that is why we are creating new when publishing */
+/* TODO: show document history, that is why we are creating new when publishing */
+/**
+ * a function that will create a new published outreach on the backend.
+ *
+ * @param state - the OutReachEditorReducerState containing the current state
+ * @param dispatch - the editor dispatch to handle events related to saving and publishing
+ * @param apiService - the api the connects to the backend used in publish and save
+ *
+ * @returns nothing
+ *
+ * @beta
+ */
 export function publishClickHandler(
   state: OutReachEditorReducerState,
   dispatch: React.Dispatch<OutReachEditorActions>,
@@ -65,11 +84,27 @@ export function publishClickHandler(
     });
 }
 
+/**
+ * a function that will save the outreach as a draft. If the this job has
+ * no outreaches associated with it, will create no outreach. Will also create
+ * new if this outreach has an edit, but the previous version was published.
+ * If this job has an outreach assocaited with it (that wasn'y published)
+ * will update said outreach
+ *
+ * @param state - the OutReachEditorReducerState containing the current state
+ * @param dispatch - the editor dispatch to handle events related to saving and publishing
+ * @param apiService - the api the connects to the backend used in publish and save
+ *
+ * @returns nothing
+ *
+ * @beta
+ */
 export function saveClickHandler(
   state: OutReachEditorReducerState,
   dispatch: React.Dispatch<OutReachEditorActions>,
   apiService: ValleeBackendApi
 ) {
+  /* we pulled an outreach from the server, and that outreach wasn't published */
   if (
     state.outreach?.id &&
     state.outreach?.state !== OutreachStateEnum.Finalized
@@ -87,7 +122,9 @@ export function saveClickHandler(
       .then((value) => {
         dispatch({ type: "EDITOR_PUT_POST_200", payload: value.data });
       });
-  } else if (isEditorChanged(state)) {
+  }
+  // There is a change and outreach is published (create new draft)
+  else if (isEditorChanged(state)) {
     apiService
       .createOutreach({
         job: state.job,

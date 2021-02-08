@@ -43,6 +43,8 @@ const OutReachEditorPage: React.FC<OutReachEditorPageProps> = (props) => {
     outreach: undefined,
     hasDraft: { hasDraft: true },
   });
+
+  // on page load, getting all outreaches for id
   useEffect(() => {
     //note: we get jobs sorted by creation, with most recent at first index
     apiService.jobsOutreachList(id).then((value) => {
@@ -92,7 +94,7 @@ const OutReachEditorPage: React.FC<OutReachEditorPageProps> = (props) => {
         apiService={apiService}
         templateState={templateState}
       />
-      <TextField
+      <TextField // our subject field
         id="standard-basic"
         label="Subject"
         onChange={onSubjectChange}
