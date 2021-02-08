@@ -72,7 +72,7 @@ export default function reducer(
       };
 
     case "EDITOR_PUT_POST_200":
-      /* TODO: Figure our serialization of text editor State*/
+      /* TODO: Figure our serialization of text editor State to get style*/
       return {
         ...state,
         outreach: action.payload,
