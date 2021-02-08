@@ -1,4 +1,4 @@
-import React, { ChangeEvent, useEffect, useReducer, useState } from "react";
+import React, { ChangeEvent, useEffect, useReducer } from "react";
 import { EditorState } from "draft-js";
 import { Editor } from "react-draft-wysiwyg";
 import reducer, { OutReachEditorReducerState } from "./OutReachReducer";

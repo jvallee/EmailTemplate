@@ -1,4 +1,3 @@
-import React from "react";
 import { EditorState } from "draft-js";
 
 import {
@@ -7,7 +6,6 @@ import {
 } from "../../../util/HelperFunctions/TextEditorHelpers";
 import { HasDraftReturnType } from "./OutReachPageHelperFunctions/HelperFunctions";
 import { Outreach } from "../../../util/gen/api/dist";
-import { AxiosResponse } from "axios";
 
 export type OutReachEditorReducerState = {
   editorState: EditorState;
