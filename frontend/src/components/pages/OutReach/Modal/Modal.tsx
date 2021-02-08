@@ -11,6 +11,7 @@ type ModalProps = {
   clickSavedHandler: () => void;
   isOpen: boolean;
 };
+
 /**
  * A component that displays a modal specific to the outreach page offering between
  * (why it is localed in outreach folder and not in components folder)
@@ -20,7 +21,7 @@ type ModalProps = {
  * @param clickDraftHandler - triggers when the user hits use draft, loads in the draft outreach
  * @param clickSavedHandler - triggers when the user uses saved, loads in the saved/published outreach
  *
- * @returns a boolean
+ * @returns a react component
  *
  * @beta
  */

@@ -7,6 +7,19 @@ type AllJobsPageProps = {
   apiService?: ValleeBackendApi;
 };
 
+/**
+ * A component representing the all jobs page. Very barebones right now
+ *  lists all the jobs that we can select an outreach for and wraps them in links to
+ *  navigate them to the editor page (The main funcitonality of the web page currently)
+ *  for regardless of which user they are connected to
+ *  Next step with this is to only pull jobs related to the client logged in
+ *
+ * @param apiService - how we communicate with the backend
+ *
+ * @returns a react component
+ *
+ * @beta
+ */
 const AllJobsPage: React.FC<AllJobsPageProps> = (props) => {
   const { apiService } = props;
   const [jobs, setJobs] = useState([{} as Job]);

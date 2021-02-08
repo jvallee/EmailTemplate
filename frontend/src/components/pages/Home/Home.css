@@ -1,0 +1,16 @@
+.homePage__root {
+    margin-top: 30px;
+}
+
+.homePage__root .loginContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.homePage__root .linkContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 15px;
+}

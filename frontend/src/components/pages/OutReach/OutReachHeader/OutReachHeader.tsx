@@ -29,7 +29,7 @@ export type OutReachHeaderProps = {
  * @param templateState - string to display conditional text if current content published or saved
  * @param apiService - the api the connects to the backend used in publish and save
  *
- * @returns a boolean
+ * @returns a react funcitonal component
  *
  * @beta
  */
