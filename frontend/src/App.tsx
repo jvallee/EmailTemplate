@@ -16,8 +16,8 @@ function App() {
 
   return (
     <div>
-      <Header />
       <Router>
+        <Header />
         <Switch>
           <Route path="/alljobs/:id">
             <OutReachEditorPage apiService={apiService} />

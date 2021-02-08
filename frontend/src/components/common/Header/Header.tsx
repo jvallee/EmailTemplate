@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import "./Header.css";
 
 type HeaderProps = {
@@ -11,13 +12,15 @@ const Header: React.FC<HeaderProps> = (props) => {
   return (
     <div className={headerClassName}>
       <div style={{ paddingTop: "20px", marginLeft: "20px" }}>
-        <img
-          src={
-            "https://careignition.com/wp-content/uploads/2019/12/careignition-Logo-B3-Horizontal-v2.png"
-          }
-          width={250}
-          height={43}
-        />
+        <Link to={"/"}>
+          <img
+            src={
+              "https://careignition.com/wp-content/uploads/2019/12/careignition-Logo-B3-Horizontal-v2.png"
+            }
+            width={250}
+            height={43}
+          />
+        </Link>
       </div>
     </div>
   );
