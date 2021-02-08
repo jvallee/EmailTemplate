@@ -19,6 +19,20 @@ export type OutReachHeaderProps = {
   templateState: string;
 };
 
+/**
+ * A header component for the outreach page. Contains the button for saving and publishing
+ * the editor contents as well as displaying the current editor state i.e draft of published
+ *
+ * @param dispatch - the editor dispatch to handle events related to saving and publishing
+ * @param state - the OutReachEditorReducerState containing the current state
+ * @param isEditorChanged -  bool self explantory
+ * @param templateState - string to display conditional text if current content published or saved
+ * @param apiService - the api the connects to the backend used in publish and save
+ *
+ * @returns a boolean
+ *
+ * @beta
+ */
 const OutReachHeader: React.FC<OutReachHeaderProps> = (props) => {
   const { dispatch, state, isEditorChanged, templateState, apiService } = props;
   return (

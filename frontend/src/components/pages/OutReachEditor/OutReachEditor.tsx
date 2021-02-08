@@ -23,7 +23,7 @@ import BorderBox from "../../common/BorderBox/BorderBox";
 import { TextField } from "@material-ui/core";
 import { ValleeBackendApi } from "../../../util/gen/api";
 
-// TODO: Delete this file, it is an old version of the Editor
+// TODO: Delete this file, it is an old version of the Editor Page, no longer used
 
 type OutReachEditorProps = {
   setQueryInfo?: Function;
