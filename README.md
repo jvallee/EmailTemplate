@@ -60,9 +60,9 @@ Note: these setup instruction are mac specific, but can be applied to windows wi
 in your terminal type in "python3 -m venv .env --copies" --copies only required on macOS, if you don't want to ignore 
 this step (ignoring is not recommended).
 
-5. then type "pip3 install -r requirements.txt" and hit return (again make sure you have installed postgres)
+5. then type "pip3 install -r requirements.txt" and hit return (again make sure you have installed postgres). 
 
-6. It is possible you get an error regarding installing psycopg2, a possible fix would be to install psycopg2-binary, but I'd recommend a cursory google search on said error before doing anything.
+6. It is possible you get an error regarding installing psycopg2, a possible fix would be to install psycopg2-binary, but I'd recommend a cursory google search on said error before doing anything. UPDATE: we have updated the requirements to include psycopg2-binary instead of psycopg2-binary
 
 7. Now in djangoProject/djangoProject/settings.py you will need to update the Databases dictionary with the proper attributes. Alternatively, you could create a database that matches the database name in postgres. Do this by running "psql" in your terminal and then running "CREATE DATABASE django_test", is is possible you will get an error that your username is not initiated, if so a simple google search will tell you how to create a postgres user. 
 8. Make sure you have actually started postgres. This is optional but recommended. Run "python manage.py loaddata initDb.json" to load in some initial data
